@@ -1,0 +1,16 @@
+function palindrome(str) {
+  let lowStr = str.toLowerCase().replace(/[\W_]/g, "");
+  let forArr = lowStr.split("");
+  let forStr = forArr.join("");
+  let temp = forArr;
+  let bacArr = temp.reverse();
+  let bacStr = bacArr.join("");
+  if (forStr == bacStr) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(palindrome("Not a palindrome"));

@@ -1,0 +1,57 @@
+function telephoneCheck(str) {
+  let strNum = str.replace(/[^0-9]/gi, "");
+  console.log(strNum)
+
+  function checkBracket(char) {
+    return char.match(/[()]/ig);
+  }
+
+  if (strNum.length == 10) {
+    let tmp = str.replace(/[ ]/g, "");
+    console.log(tmp)
+    for (let i = 5; i < tmp.length; i++) {
+      if (checkBracket(tmp[i]) !== null) {
+        return false
+      }
+    }
+    if (tmp[0] == "(" && tmp[4] == ")") {
+      return true;
+    }
+    else if (tmp[3] == "-" && tmp[7] == "-") {
+      return true;
+    }
+    else if (tmp.match(/\W/gi) == null) {
+      return true;
+    }
+    return false;
+    }
+
+  if (strNum.length == 11) {
+    let tmp2 = str.replace(/[ ]/g, "");
+    console.log(tmp2)
+    if (tmp2[0] != 1) {
+      return false;
+    }
+    for (let i = 6; i < tmp2.length; i++) {
+      if (checkBracket(tmp2[i]) !== null) {
+        return false
+      }
+    }
+    if (tmp2[1] == "(" && tmp2[5] == ")") {
+      return true;
+    }
+    else if (tmp2[4] == "-" && tmp2[8] == "-"){
+      return true;
+    }
+    else if (tmp2.match(/\W/g) == null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  return false;
+}
+
+telephoneCheck("1 (555) 555-5555");
